@@ -11,7 +11,7 @@
         }
     }
 
-    async deleteCity({cityid}){
+    async deleteCity(cityid){
         try {
             await City.destroy({
                 where :{
@@ -26,11 +26,9 @@
     }
     async updatecity(cityid,data){
         try{
-            const city = await city.update(data,{
-                where : {
-                    id : cityid
-                }
-            });
+            const city = await City.findByPk(cityid);
+            if (!city) return null;
+            await city.update(data);
             return city;
         }
         catch(error){
@@ -39,9 +37,9 @@
         }
     }
      
-    async getcity(cityid){
+    async getCity(cityid){
         try{
-            const city = await city.findbypk(cityid);
+            const city = await City.findByPk(cityid);
             return city; 
         }
         catch(error){
