@@ -10,7 +10,7 @@ class CityService{
             return city;
         }
         catch(error){
-            console.log("something went wrong on the repostitory");
+            console.log("Something went wrong on the repostitory");
             throw{error};
         }
     }
@@ -20,7 +20,7 @@ class CityService{
             return response;
         }
         catch(error){
-            console.log("something went wrong on the repository");
+            console.log("Something went wrong on the repository");
             throw{error};
         }
     }
