@@ -24,7 +24,7 @@
             throw{error};
         }
     }
-    async updatecity(cityid,data){
+    async updateCity(cityid,data){
         try{
             const city = await City.findByPk(cityid);
             if (!city) return null;
