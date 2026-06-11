@@ -1,4 +1,4 @@
-   const {City} = require('../models/index')
+    const {City} = require('../models/index')
    
    class CityRepository {
     async createCity({name}){
@@ -48,6 +48,16 @@
         }
 
     }
+  
+   async getallcities(){
+    try{
+       const city = await City.findAll();
+        return city;
+    }
+    catch(error){
+        console.log("kuch to gadbad hogyi hain ");
+        throw{error};
+    }
    }
-
+}
 module.exports = CityRepository;

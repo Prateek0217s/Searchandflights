@@ -44,6 +44,16 @@ class CityService{
             throw{error};
         }
     }
+    async getallcities(){
+        try{
+            const city = await this.cityRepository.getallcities();
+            return city;
+        }
+        catch(error){
+            console.log("kuch to gadbad hogyi hain");
+            throw{error};
+        }
+    }
     }
 
 module.exports = CityService;
