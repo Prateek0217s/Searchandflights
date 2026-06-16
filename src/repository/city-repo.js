@@ -1,11 +1,13 @@
-    const {City} = require('../models/index')
+    const { Op } = require('sequelize');
+    const {City} = require('../models/index');
    
    class CityRepository {
     async createCity({name}){
         try {
             const city = await City.create({name});
             return city;
-        } catch(error){
+        } 
+        catch(error){
             console.log("something went wrong on the repository");
             throw{error};
         }
@@ -19,7 +21,8 @@
                 }
             });
             return true;
-        } catch(error){
+        } 
+        catch(error){
             console.log("something went wrong on the repository");
             throw{error};
         }
@@ -49,8 +52,19 @@
 
     }
   
-   async getallcities(){
+   async getallcities(filter = {}){
     try{
+        if(filter.name){
+            const city = await City.findAll({
+                where : {
+                    name : {
+                        [Op.like] : `${filter.name}%`
+                    }
+                }
+            });
+            return city;
+
+        }
        const city = await City.findAll();
         return city;
     }
