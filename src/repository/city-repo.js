@@ -50,7 +50,7 @@
             throw{error};
         }
 
-    }
+    } 
   
    async getallcities(filter = {}){
     try{
