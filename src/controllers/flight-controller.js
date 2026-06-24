@@ -4,7 +4,8 @@ const flightService = new FlightService();
 
 const create = async (req, res) => {
     try {
-        const flight = await flightService.createFlight(req.body);
+        // Accept JSON request bodies and query parameters. Body values take priority.
+        const flight = await flightService.createFlight({ ...req.query, ...req.body });
         return res.status(201).json({
             data: flight,
             success : true,
@@ -13,7 +14,7 @@ const create = async (req, res) => {
         });
     }
     catch (error) {
-        console.log(error);
+        console.error(error);
         return res.status(error.statusCode || 500).json({
             data: {},
             success : false,
