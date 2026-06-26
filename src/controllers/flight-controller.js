@@ -1,4 +1,4 @@
-const { Trophy } = require('lucide-react');
+
 const { FlightService } = require('../services/index');
 
 const flightService = new FlightService();
@@ -26,7 +26,7 @@ const create = async (req, res) => {
 
 const getall =  async(req,res) => {
     try{
-        const flight = await flightService.getallflights(req.query);
+        const flight = await flightService.getFlightData(req.query);
         return res.status(200).json({
             data : flight,
             success : true,

@@ -54,8 +54,8 @@ class FlightService {
         });
     }
 
-    async getFlightData() {
-        return this.flightRepository.getFlightData();
+    async getFlightData(filter) {
+        return this.flightRepository.getFlightData(filter);
     }
 }
 

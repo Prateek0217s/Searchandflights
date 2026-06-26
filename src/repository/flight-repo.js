@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Flights } = require('../models/index');
 
 class FlightRepository{
@@ -41,9 +42,36 @@ class FlightRepository{
     }
    
 
-    async getFlightData(){
+    async getFlightData(filter = {}){
         try{
-            const flight = await Flights.findAll();
+            const where = {};
+            const minPrice = filter.minprice ?? filter.minPrice;
+            const maxPrice = filter.maxprice ?? filter.maxPrice;
+            const departureAirportId = filter.departureAirportId ?? filter.departueAirportId;
+
+            if (filter.airplaneId) {
+                where.airplaneId = filter.airplaneId;
+            }
+
+            if (departureAirportId) {
+                where.departueAirportId = departureAirportId;
+            }
+
+            if (filter.arrivalAirportId) {
+                where.arrivalAirportId = filter.arrivalAirportId;
+            }
+
+            if (minPrice || maxPrice) {
+                where.price = {};
+                if (minPrice) {
+                    where.price[Op.gte] = Number(minPrice);
+                }
+                if (maxPrice) {
+                    where.price[Op.lte] = Number(maxPrice);
+                }
+            }
+
+            const flight = await Flights.findAll({ where });
             return flight;
         }
         catch(error){
