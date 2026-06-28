@@ -8,6 +8,22 @@ class AirportService {
     async createAirport(data) {
         return this.airportRepository.createAirport(data);
     }
+
+    async getAirport(id) {
+        return this.airportRepository.getAirport(id);
+    }
+
+    async getAllAirports(filter) {
+        return this.airportRepository.getAllAirports(filter);
+    }
+
+    async updateAirport(id, data) {
+        return this.airportRepository.updateAirport(id, data);
+    }
+
+    async deleteAirport(id) {
+        return this.airportRepository.deleteAirport(id);
+    }
 }
 
 module.exports = AirportService;
