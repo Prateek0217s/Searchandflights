@@ -14,7 +14,7 @@
         "host" : "127.0.0.1",
         "dialect" : "mysql"
     }
-    }
+    
 
 -Once you have added your db config as listed above, go to the src folder and run the command "npx sequelize db:create"
 
@@ -31,7 +31,7 @@
 
  ## Tables : 
 
- -> City  -> id,name,created_at, updated_at.
+ -> City -> id,name,created_at, updated_at.
  -> Airport ->  id,name,address,city_id,created_at,updated_at
     Relationship : City can have many airports and Airport belongs to a city (one to many)
  
